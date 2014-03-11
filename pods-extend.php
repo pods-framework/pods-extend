@@ -80,7 +80,11 @@ class Pods_Extend {
 		 *
 		 * NOTE: These are some example hooks that are useful for extending Pods, uncomment as needed.
 		 */
+		//Example: Add a tab to the pods editor for a CPT Pod called 'jedi
+		//add_filter( 'pods_admin_setup_edit_tabs_post_type_jedi', array( $this, 'jedi_tabs' ), 11, 3 );
 
+		//Example: Add fields to the Pods editor for all Advanced Content Types
+		//add_filter( 'pods_admin_setup_edit_options_advanced', array( $this, 'act_options' ), 11, 2 );
 	}
 
 	/**
