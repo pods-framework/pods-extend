@@ -42,6 +42,8 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Pods_Extend class
  *
  * @class Pods_Extend The class that holds the entire Pods_Extend plugin
+ *
+ * @since 0.0.1
  */
 class Pods_Extend {
 
@@ -49,23 +51,35 @@ class Pods_Extend {
 	 * Constructor for the Pods_Extend class
 	 *
 	 * Sets up all the appropriate hooks and actions
-	 * within our plugin.
+	 * within the plugin.
 	 *
-	 * @uses register_activation_hook()
-	 * @uses register_deactivation_hook()
-	 * @uses is_admin()
-	 * @uses add_action()
+	 * @since 0.0.1
 	 */
 	public function __construct() {
+
+		/**
+		 * Plugin Setup
+		 */
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
 		// Localize our plugin
 		add_action( 'init', array( $this, 'localization_setup' ) );
 
+		/**
+		 * Scripts/ Styles
+		 */
 		// Loads frontend scripts and styles
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
+		// Loads admin scripts and styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+
+		/**
+		 * Hooks that extend Pods
+		 *
+		 * NOTE: These are some example hooks that are useful for extending Pods, uncomment as needed.
+		 */
 
 	}
 
@@ -74,6 +88,8 @@ class Pods_Extend {
 	 *
 	 * Checks for an existing Pods_Extend() instance
 	 * and if it doesn't find one, creates it.
+	 *
+	 * @since 0.0.1
 	 */
 	public static function init() {
 		static $instance = false;
@@ -88,7 +104,7 @@ class Pods_Extend {
 	/**
 	 * Placeholder for activation function
 	 *
-	 * Nothing being called here yet.
+	 * @since 0.0.1
 	 */
 	public function activate() {
 
@@ -97,7 +113,7 @@ class Pods_Extend {
 	/**
 	 * Placeholder for deactivation function
 	 *
-	 * Nothing being called here yet.
+	 * @since 0.0.1
 	 */
 	public function deactivate() {
 
@@ -106,7 +122,7 @@ class Pods_Extend {
 	/**
 	 * Initialize plugin for localization
 	 *
-	 * @uses load_plugin_textdomain()
+	 * @since 0.0.1
 	 */
 	public function localization_setup() {
 		load_plugin_textdomain( 'pods-extend', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -117,9 +133,7 @@ class Pods_Extend {
 	 *
 	 * Allows plugin assets to be loaded.
 	 *
-	 * @uses wp_enqueue_script()
-	 * @uses wp_localize_script()
-	 * @uses wp_enqueue_style
+	 * @since 0.0.1
 	 */
 	public function enqueue_scripts() {
 
@@ -149,8 +163,7 @@ class Pods_Extend {
 	 *
 	 * Allows plugin assets to be loaded.
 	 *
-	 * @uses wp_enqueue_script()
-	 * @uses wp_enqueue_style
+	 * @since 0.0.1
 	 */
 	public function admin_enqueue_scripts() {
 
