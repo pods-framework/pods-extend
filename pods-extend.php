@@ -6,7 +6,7 @@ Description: Description
 Version: 0.0.1
 Author: Your Name
 Author URI: http://example.com/
-License: GPL2
+License: GPL v2 or later
 */
 
 /**
