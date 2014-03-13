@@ -6,6 +6,7 @@ Description: Description
 Version: 0.0.1
 Author: Your Name
 Author URI: http://example.com/
+Text Domain: pods-extend
 License: GPL v2 or later
 */
 
@@ -207,13 +208,13 @@ class Pods_Extend {
 				'boolean_yes_label' => 'Yes'
 			),
 			'example_text' => array(
-				'label' => __( 'Enter some text', 'pods' ),
+				'label' => __( 'Enter some text', 'pods-extend' ),
 				'help' => __( 'Helpful info about this option that will appear in its help bubble', 'pods-extend' ),
 				'type' => 'text',
 				'default' => 'Default text',
 			),
 			'dependency_example' => array(
-				'label' => __( 'Dependency Example', 'pods' ),
+				'label' => __( 'Dependency Example', 'pods-extend' ),
 				'help' => __( 'When set to true, this field reveals the field "dependent_example".', 'pods' ),
 				'type' => 'boolean',
 				'default' => false,
@@ -221,7 +222,7 @@ class Pods_Extend {
 				'boolean_yes_label' => ''
 			),
 			'dependent_example' => array(
-			'label' => __( 'Dependent Option', 'pods' ),
+			'label' => __( 'Dependent Option', 'pods-extend' ),
 			'help' => __( 'This field is hidden unless the field "dependency_example" is set to true.', 'pods' ),
 			'type' => 'text',
 			'depends-on' => array( 'dependency_example' => true )
