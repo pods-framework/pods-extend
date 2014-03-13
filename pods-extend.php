@@ -85,6 +85,13 @@ class Pods_Extend {
 
 		//Example: Add fields to the Pods editor for all Advanced Content Types
 		//add_filter( 'pods_admin_setup_edit_options_advanced', array( $this, 'act_options' ), 11, 2 );
+
+		/**
+		//Example: Add a tab for all post types and some options inside of it.
+		//See example callbacks below
+		add_filter( 'pods_admin_setup_edit_tabs_post_type', array( $this, 'pt_tab' ), 11, 3 );
+		add_filter( 'pods_admin_setup_edit_options_post_type', array( $this, 'pt_options' ), 12, 2 );
+		*/
 	}
 
 	/**
@@ -183,6 +190,48 @@ class Pods_Extend {
 
 
 	}
+
+	function pt_tab( $tabs, $pod, $addtl_args ) {
+		$tabs[ 'pods-extend' ] = __( 'Pods Extend Options', 'pods-extend' );
+		return $tabs;
+	}
+
+	function pt_options( $options, $pod  ) {
+
+		$options[ 'pods-extend' ] = array(
+			'example_boolean' => array(
+				'label' => __( 'Enable something?', 'pods-extend' ),
+				'help' => __( 'Helpful info about this option that will appear in its help bubble', 'pods-extend' ),
+				'type' => 'boolean',
+				'default' => true,
+				'boolean_yes_label' => 'Yes'
+			),
+			'example_text' => array(
+				'label' => __( 'Enter some text', 'pods' ),
+				'help' => __( 'Helpful info about this option that will appear in its help bubble', 'pods-extend' ),
+				'type' => 'text',
+				'default' => 'Default text',
+			),
+			'dependency_example' => array(
+				'label' => __( 'Dependency Example', 'pods' ),
+				'help' => __( 'When set to true, this field reveals the field "dependent_example".', 'pods' ),
+				'type' => 'boolean',
+				'default' => false,
+				'dependency' => true,
+				'boolean_yes_label' => ''
+			),
+			'dependent_example' => array(
+			'label' => __( 'Dependent Option', 'pods' ),
+			'help' => __( 'This field is hidden unless the field "dependency_example" is set to true.', 'pods' ),
+			'type' => 'text',
+			'depends-on' => array( 'dependency_example' => true )
+			)
+
+		);
+		return $options;
+	}
+
+
 
 } // Pods_Extend
 
