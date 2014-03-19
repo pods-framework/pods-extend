@@ -81,14 +81,18 @@ class Pods_Extend {
 		 *
 		 * NOTE: These are some example hooks that are useful for extending Pods, uncomment as needed.
 		 */
+
 		//Example: Add a tab to the pods editor for a CPT Pod called 'jedi
 		//add_filter( 'pods_admin_setup_edit_tabs_post_type_jedi', array( $this, 'jedi_tabs' ), 11, 3 );
 
 		//Example: Add fields to the Pods editor for all Advanced Content Types
 		//add_filter( 'pods_admin_setup_edit_options_advanced', array( $this, 'act_options' ), 11, 2 );
 
+		//Example: Add a submenu item to Pods Admin Menu
+		//add_filter( 'pods_admin_menu', array( $this, 'add_menu' ) );
+
 		/**
-		//Example: Add a tab for all post types and some options inside of it.
+		//Complete Example: Add a tab for all post types and some options inside of it.
 		//See example callbacks below
 		add_filter( 'pods_admin_setup_edit_tabs_post_type', array( $this, 'pt_tab' ), 11, 3 );
 		add_filter( 'pods_admin_setup_edit_options_post_type', array( $this, 'pt_options' ), 12, 2 );
@@ -232,6 +236,34 @@ class Pods_Extend {
 		return $options;
 	}
 
+	/**
+	 * Adds a sub menu page to the Pods admin
+	 *
+	 * @param array $admin_menus The submenu items in Pods Admin menu.
+	 *
+	 * @return mixed
+	 *
+	 * @since 0.0.1
+	 */
+	function add_menu( $admin_menus ) {
+		$admin_menus[ 'pods_extend'] = array(
+			'label' => __( 'Pods Extend', 'pods-extend' ),
+			'function' => array( $this, 'menu_page' ),
+			'access' => 'manage_options'
+
+		);
+		return $admin_menus;
+	}
+
+	/**
+	 * This is the callback for the menu page. Be sure to create some actual functionality!
+	 *
+	 * @since 0.0.1
+	 */
+	function menu_page() {
+		echo '<h3>Pods Extend</h3>';
+
+	}
 
 
 } // Pods_Extend
