@@ -196,11 +196,32 @@ class Pods_Extend {
 
 	}
 
+	/**
+	 * Adds an admin tab to Pods editor for all post types
+	 *
+	 * @param array $tabs The admin tabs
+	 * @param object $pod Current Pods Object
+	 * @param $addtl_args
+	 *
+	 * @return array
+	 *
+	 * @since 0.0.1
+	 */
 	function pt_tab( $tabs, $pod, $addtl_args ) {
 		$tabs[ 'pods-extend' ] = __( 'Pods Extend Options', 'pods-extend' );
 		return $tabs;
 	}
 
+	/**
+	 * Adds options to Pods editor for post types
+	 *
+	 * @param array $options All the options
+	 * @param object $pod Current Pods object.
+	 *
+	 * @return array
+	 *
+	 * @since 0.0.1
+	 */
 	function pt_options( $options, $pod  ) {
 
 		$options[ 'pods-extend' ] = array(
@@ -225,11 +246,11 @@ class Pods_Extend {
 				'dependency' => true,
 				'boolean_yes_label' => ''
 			),
-			'dependent_example' => array(
-			'label' => __( 'Dependent Option', 'pods-extend' ),
-			'help' => __( 'This field is hidden unless the field "dependency_example" is set to true.', 'pods' ),
-			'type' => 'text',
-			'depends-on' => array( 'dependency_example' => true )
+				'dependent_example' => array(
+				'label' => __( 'Dependent Option', 'pods-extend' ),
+				'help' => __( 'This field is hidden unless the field "dependency_example" is set to true.', 'pods' ),
+				'type' => 'text',
+				'depends-on' => array( 'dependency_example' => true )
 			)
 
 		);
