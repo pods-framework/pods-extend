@@ -97,6 +97,7 @@ class Pods_Extend {
 		add_filter( 'pods_admin_setup_edit_tabs_post_type', array( $this, 'pt_tab' ), 11, 3 );
 		add_filter( 'pods_admin_setup_edit_options_post_type', array( $this, 'pt_options' ), 12, 2 );
 		*/
+		
 	}
 
 	/**
@@ -115,6 +116,7 @@ class Pods_Extend {
 		}
 
 		return $instance;
+		
 	}
 
 	/**
@@ -142,6 +144,7 @@ class Pods_Extend {
 	 */
 	public function localization_setup() {
 		load_plugin_textdomain( 'pods-extend', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		
 	}
 
 	/**
@@ -171,7 +174,7 @@ class Pods_Extend {
 		 */
 		// $translation_array = array( 'some_string' => __( 'Some string to translate', 'pods-extend' ), 'a_value' => '10' );
 		// wp_localize_script( 'pods-extend-scripts', 'podsExtend', $translation_array ) );
-
+		
 	}
 
 	/**
@@ -192,8 +195,7 @@ class Pods_Extend {
 		 * All admin scripts goes here
 		 */
 		wp_enqueue_script( 'pods-extend-admin-scripts', plugins_url( 'js/admin.js', __FILE__ ), array( ), false, true );
-
-
+		
 	}
 
 	/**
@@ -209,7 +211,9 @@ class Pods_Extend {
 	 */
 	function pt_tab( $tabs, $pod, $addtl_args ) {
 		$tabs[ 'pods-extend' ] = __( 'Pods Extend Options', 'pods-extend' );
+		
 		return $tabs;
+		
 	}
 
 	/**
@@ -254,7 +258,9 @@ class Pods_Extend {
 			)
 
 		);
+		
 		return $options;
+		
 	}
 
 	/**
@@ -273,7 +279,9 @@ class Pods_Extend {
 			'access' => 'manage_options'
 
 		);
+		
 		return $admin_menus;
+		
 	}
 
 	/**
