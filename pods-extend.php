@@ -303,11 +303,11 @@ class Pods_Extend {
  * @since 0.0.1
  */
 add_action( 'plugins_loaded', 'pods_extend_safe_activate');
-function pods_extend__safe_activate() {
+function pods_extend_safe_activate() {
 	if ( defined( 'PODS_VERSION' ) ) {
 		$GLOBALS[ 'Pods_Extend' ] = Pods_Extend::init();
 	}
-	
+
 }
 
 
