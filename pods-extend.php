@@ -297,8 +297,6 @@ class Pods_Extend {
 
 } // Pods_Extend
 
-
-
 /**
  * Initialize class, if Pods is active.
  *
@@ -307,8 +305,9 @@ class Pods_Extend {
 add_action( 'plugins_loaded', 'pods_extend_safe_activate');
 function pods_extend__safe_activate() {
 	if ( defined( 'PODS_VERSION' ) ) {
-		$pods_extend = Pods_Extend::init();
+		$GLOBALS[ 'Pods_Extend' ] = Pods_Extend::init();
 	}
+	
 }
 
 
@@ -319,20 +318,56 @@ function pods_extend__safe_activate() {
  *
  * @since 0.0.1
  */
-add_action( 'admin_notices', 'pods_extend__admin_notice' );
-function pods_extend__admin_notice() {
+add_action( 'admin_notices', 'pods_extend_admin_notice_pods_not_active' );
+function pods_extend_admin_notice_pods_not_active() {
 
 	if ( ! defined( 'PODS_VERSION' ) ) {
 
-		//use the gloabl pagenow so we can tell if we are on plugins admin page
+		//use the global pagenow so we can tell if we are on plugins admin page
 		global $pagenow;
-		if ( $pagenow == 'plugins.php'  ) {
+		if ( $pagenow == 'plugins.php' ) {
 			?>
 			<div class="updated">
-				<p><?php _e( 'You have activated Pods Extend, but not the core Pods plugin.', 'pfat' ); ?></p>
+				<p><?php _e( 'You have activated Pods Extend, but not the core Pods plugin.', 'pods_extend' ); ?></p>
 			</div>
-			<?php
+		<?php
 
 		} //endif on the right page
 	} //endif Pods is not active
+
+}
+
+/**
+ * Throw admin nag if Pods minimum version is not met
+ *
+ * Will only show on the Pods admin page
+ *
+ * @since 0.0.1
+ */
+add_action( 'admin_notices', 'pods_extend_admin_notice_pods_min_version_fail' );
+function pods_extend_admin_notice_pods_min_version_fail() {
+
+	if ( defined( 'PODS_VERSION' ) ) {
+
+		//set minimum supported version of Pods.
+		$minimum_version = '2.3.18';
+
+		//check if Pods version is greater than or equal to minimum supported version for this plugin
+		if ( version_compare(  $minimum_version, PODS_VERSION ) >= 0) {
+
+			//create $page variable to check if we are on pods admin page
+			$page = pods_v('page','get', false, true );
+
+			//check if we are on Pods Admin page
+			if ( $page === 'pods' ) {
+				?>
+				<div class="updated">
+					<p><?php _e( 'Pods Extend, requires Pods version '.$minimum_version.' or later. Current version of Pods is '.PODS_VERSION, 'pods_extend' ); ?></p>
+				</div>
+			<?php
+
+			} //endif on the right page
+		} //endif version compare
+	} //endif Pods is not active
+
 }
