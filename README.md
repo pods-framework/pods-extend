@@ -34,7 +34,13 @@ Instructions
 
     See the example class. Don't forget to include the file and initialize the class.
 
+When Not To Use This Plugin
+===========================
+* If you are not comfortable with object-oriented PHP.
 
+* When this plugin is overkill.
+
+If you just need to add some code to help implement Pods in your site, and do not need what this plugin provides, you may be better served by [this plugin](https://gist.github.com/Shelob9/9979551). It simply includes a file for your custom code, if Pods is active.
 
 Notes and License
 ==================
