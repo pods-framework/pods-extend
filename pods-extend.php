@@ -297,4 +297,11 @@ class Pods_Extend {
 
 } // Pods_Extend
 
-$pods_extend = Pods_Extend::init();
+/**
+ * Initialize main class if Pods is active.
+ *
+ * @since 0.0.1
+ */
+if ( defined( 'PODS_VERSION' ) ) {
+	$pods_extend = Pods_Extend::init();
+}
