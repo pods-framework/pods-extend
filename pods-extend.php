@@ -297,4 +297,42 @@ class Pods_Extend {
 
 } // Pods_Extend
 
-$pods_extend = Pods_Extend::init();
+
+
+/**
+ * Initialize class, if Pods is active.
+ *
+ * @since 0.0.1
+ */
+add_action( 'plugins_loaded', 'pods_extend_safe_activate');
+function pods_extend__safe_activate() {
+	if ( defined( 'PODS_VERSION' ) ) {
+		$pods_extend = Pods_Extend::init();
+	}
+}
+
+
+/**
+ * Throw admin nag if Pods isn't activated.
+ *
+ * Will only show on the plugins page.
+ *
+ * @since 0.0.1
+ */
+add_action( 'admin_notices', 'pods_extend__admin_notice' );
+function pods_extend__admin_notice() {
+
+	if ( ! defined( 'PODS_VERSION' ) ) {
+
+		//use the gloabl pagenow so we can tell if we are on plugins admin page
+		global $pagenow;
+		if ( $pagenow == 'plugins.php'  ) {
+			?>
+			<div class="updated">
+				<p><?php _e( 'You have activated Pods Extend, but not the core Pods plugin.', 'pfat' ); ?></p>
+			</div>
+			<?php
+
+		} //endif on the right page
+	} //endif Pods is not active
+}
