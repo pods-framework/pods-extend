@@ -20,6 +20,8 @@ Instructions
 
     * Search for 'Pods_Extend' and replace with your plugin's proper name with underscores instead of spaces between words.
 
+    * Search for 'PODS_EXTEND' and replace with your plugin's proper name in all caps. This is for constants.
+
     * Be sure to set the plugin header meta data. See [https://codex.wordpress.org/Writing_a_Plugin#Names.2C_Files.2C_and_Locations](https://codex.wordpress.org/Writing_a_Plugin#Names.2C_Files.2C_and_Locations).
 
 * Usage

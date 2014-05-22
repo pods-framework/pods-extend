@@ -40,6 +40,15 @@ License: GPL v2 or later
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Define constants
+ *
+ * @since 0.0.2
+ */
+define( 'PODS_EXTEND_SLUG', plugin_basename( __FILE__ ) );
+define( 'PODS_EXTEND_URL', plugin_dir_url( __FILE__ ) );
+define( 'PODS_EXTEND_DIR', plugin_dir_path( __FILE__ ) );
+
+/**
  * Pods_Extend class
  *
  * @class Pods_Extend The class that holds the entire Pods_Extend plugin
@@ -143,7 +152,7 @@ class Pods_Extend {
 	 * @since 0.0.1
 	 */
 	public function localization_setup() {
-		load_plugin_textdomain( 'pods-extend', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'pods-extend', false, trailingslashit( PODS_EXTEND_URL ) . '/languages/' );
 		
 	}
 
@@ -159,12 +168,12 @@ class Pods_Extend {
 		/**
 		 * All styles goes here
 		 */
-		wp_enqueue_style( 'pods-extend-styles', plugins_url( 'css/front-end.css', __FILE__ ) );
+		wp_enqueue_style( 'pods-extend-styles', trailingslashit( PODS_EXTEND_URL ) . 'css/front-end.css' );
 
 		/**
 		 * All scripts goes here
 		 */
-		wp_enqueue_script( 'pods-extend-scripts', plugins_url( 'js/front-end.js', __FILE__ ), array( ), false, true );
+		wp_enqueue_script( 'pods-extend-scripts', trailingslashit( PODS_EXTEND_URL ) . 'js/front-end.js', array( ), false, true );
 
 
 		/**
