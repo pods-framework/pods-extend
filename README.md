@@ -1,35 +1,50 @@
-## This plugin has been incorpated into Pods 2.5.5 and is no longer needed. You can safely deactivate it. Your settings will be preserved.
+Pods Starter Plugin
+===========
 
-<p align="center">
-  <img src="./rectangle-logo.png" alt="Pods Frontier Auto Template" />
-</p>
+A starter plugin for extending Pods' functionality.
 
-<h1 align="center">Pods Frontier Auto Template</h1>
-<p align="center">
-Automatic front-end output of Pods Templates. No PHP code required.
-</p>
-
-<strong>This plugin has been incorpated into Pods 2.5.5 and is no longer needed. You can safely deactivate it. Your settings will be preserved.</strong>
-
-Supports custom post types, Pods extended posts and pages, as well as custom taxonomies.
-
-Requires Pods 2.3.18 or later.
-
-This plugin was created using [Pods Extend](https://github.com/pods-framework/pods-extend), the new Pods Plugin starter plugin, as part of [a series of tutorials on creating Pods Plugins](http://pods.io/tutorials/creating-pods-plugins/).
+Requires Pods 2.3.18 or later. (Please keep this notice in your plugin and set the appropriate version.)
 
 Instructions
 ============
-For complete instructions see [http://pods.io/tutorials/creating-pods-plugins/using-pods-display/](http://pods.io/tutorials/creating-pods-plugins/using-pods-display/)
 
-In the Pods editor, under the "Frontier Auto Display Options" tab, click the "Enable Automatic Pods Templates for this Pod?" option.
+* Naming
 
-New fields will be revealed: "Single item view template" and "Archive view template" as well as fields to set the location for the template. In these fields enter the name of Pods Templates that you wish to use in each case and whether you want it to appear before, after or in place of the post content.
+  You will need to change the name of the plugin in a few simple steps:
 
-The "Single item view template" option sets the Pods Template used for individual post pages and the "Archive view template" option sets the Pods Template used for the list of posts in the custom post type. For taxonomies only the "Archive view template" option will be shown.
+    * Rename the base plugin folder name and primary PHP file named 'pods-extend.php' to your plugin's name. Make sure the folder name matches the name of the PHP file (without .php on the end).
 
-NOTE: Archives for custom post types must be enabled under the "Advanced Options" tab using the option "Enable Archive Page". By default archives are not enabled.
+    * Search for 'pods-extend' and replace with your desired plugin name in all lowercase with dashes between words (if desired).
+
+    * Search for 'Pods Starter Plugin' and replace with your plugin's proper name.
+
+    * Search for 'Pods_Extend' and replace with your plugin's proper name with underscores instead of spaces between words.
+
+    * Search for 'PODS_EXTEND' and replace with your plugin's proper name in all caps. This is for constants.
+
+    * Be sure to set the plugin header meta data. See [https://codex.wordpress.org/Writing_a_Plugin#Names.2C_Files.2C_and_Locations](https://codex.wordpress.org/Writing_a_Plugin#Names.2C_Files.2C_and_Locations).
+
+* Usage
+ 
+<em>Tutorials, like winter are coming.</em>
+
+  * Adding options to Pods Admin:
+
+     Check out the example filters in __construct(). Be sure to note the complete example that has example callbacks.
+
+  * Adding a new Pods field:
+
+    See the example class. Don't forget to include the file and initialize the class.
+
+When Not To Use This Plugin
+===========================
+* If you are not comfortable with object-oriented PHP.
+
+* When this plugin is overkill.
+
+If you just need to add some code to help implement Pods in your site, and do not need what this plugin provides, you may be better served by [this plugin](https://gist.github.com/Shelob9/9979551). It simply includes a file for your custom code, if Pods is active.
 
 Notes and License
 ==================
 
-This plugin, like Pods and WordPress is licensed under the terms of the GNU General Public License (GPL) version 2.
+This plugin is based on [Base WP Plugin](https://github.com/tareq1988/Base-WP-Plugin) and like Pods and WordPress is licensed under the terms of the GNU General Public License (GPL) version 2.
